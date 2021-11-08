@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class CoordinatePlane {
+public class XAndYValues {
     private int[] Xs;
     private int[] Ys;
 
-    public CoordinatePlane(List<String> coordinateTokens) {
+    public XAndYValues(List<String> coordinateTokens) {
         int coordinateSize = coordinateTokens.size();
         Xs = new int[coordinateSize];
         Ys = new int[coordinateSize];
