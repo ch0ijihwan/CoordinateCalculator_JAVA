@@ -60,17 +60,18 @@ class CoordinateTest {
         );
     }
 
-    @Test
-    @DisplayName("두 좌표 객체를 비교하여 x값과 y값이 각각 같은 경우 true를 반환")
-    void equals() {
+    @ParameterizedTest
+    @CsvSource(value = {"1,1,true","2,2,false"})
+    @DisplayName("두 좌표 객체를 비교하여 x값과 y값이 각각 같은 경우 true를 반환, 그렇지 않은 경우 false를 반환")
+    void equals(int x, int y, boolean expect) {
         //given
-        Coordinate otherCoordinate = new Coordinate(1, 1);
+        Coordinate otherCoordinate = new Coordinate(x, y);
         coordinate = new Coordinate(1, 1);
 
         //when
         boolean actual = coordinate.equals(otherCoordinate);
 
         //then
-        assertThat(actual).isTrue();
+        assertThat(actual).isEqualTo(expect);
     }
 }
