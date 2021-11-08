@@ -1,0 +1,60 @@
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+
+public class CoordinateTest {
+    private Coordinate coordinate;
+
+    @Test
+    @DisplayName("객체 생성시 입력 받은 좌표의 x의 값을 반환한다.")
+    void getX() {
+        //given
+        coordinate = new Coordinate(1, 2);
+        int expect = 1;
+
+        //when
+        int actual = coordinate.getX();
+
+        //then
+        assertThat(actual).isEqualTo(expect);
+    }
+
+    @Test
+    @DisplayName("객체 생성시 입력 받은 좌표의 y의 값을 반환한다.")
+    void getY() {
+        //given
+        coordinate = new Coordinate(1, 2);
+        int expect = 2;
+
+        //when
+        int actual = coordinate.getY();
+
+        //then
+        assertThat(actual).isEqualTo(expect);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2", "0,0", "10,20", "-1,-1"})
+    @DisplayName("하나의 문자열로 숫자 두개를 받았을 때, 그중 첫번째로 입력받은 수를 x로" +
+            "두번째로 입력받은 수를 y로 좌표 형태로 저장하는지 확인한다.")
+    void createCoorinate(String coordinate) {
+        //given
+        int x = Integer.parseInt(coordinate.split(",")[0]);
+        int y = Integer.parseInt(coordinate.split(",")[1]);
+        int expectX = x;
+        int expectY = y;
+
+        //when
+        coordinate = new Coordinate(x, y);
+
+        //then
+        assertAll(
+                () -> assertThat(coordinate.getX()).isEqualTo(expectX),
+                () -> assertThat(coordinate.getY()).isEqualTo(expectY)
+        );
+    }
+}
