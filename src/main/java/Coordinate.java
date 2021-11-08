@@ -4,13 +4,14 @@ public class Coordinate {
 
     public Coordinate(int x, int y) {
         this.x = x;
-        this.y= y;
+        this.y = y;
     }
 
     public int getX() {
         return x;
     }
-    public int getY(){
+
+    public int getY() {
         return y;
     }
 }
