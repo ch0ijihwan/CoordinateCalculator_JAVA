@@ -59,4 +59,18 @@ class CoordinateTest {
                 () -> assertThat(coordinate.getY()).isEqualTo(expectY)
         );
     }
+
+    @Test
+    @DisplayName("두 좌표 객체를 비교하여 x값과 y값이 각각 같은 경우 true를 반환")
+    void equals() {
+        //given
+        Coordinate otherCoordinate = new Coordinate(1, 1);
+        coordinate = new Coordinate(1, 1);
+
+        //when
+        boolean actual = coordinate.equals(otherCoordinate);
+
+        //then
+        assertThat(actual).isTrue();
+    }
 }
