@@ -1,4 +1,6 @@
-import vo.Coordinate;
+package model;
+
+import model.vo.Coordinate;
 
 import java.util.ArrayList;
 import java.util.List;

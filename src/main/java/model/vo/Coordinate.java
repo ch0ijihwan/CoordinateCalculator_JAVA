@@ -1,4 +1,4 @@
-package vo;
+package model.vo;
 
 import java.util.Objects;
 

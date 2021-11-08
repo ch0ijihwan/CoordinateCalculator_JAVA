@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -16,7 +18,7 @@ public class XAndYValues {
 
     private List<String> removeBrackets(List<String> tokens) {
         List<String> removedBrackets = new ArrayList<>();
-        tokens.stream().forEach(token -> removedBrackets.add(token.substring(1, token.length() - 1)));
+        tokens.forEach(token -> removedBrackets.add(token.substring(1, token.length() - 1)));
 
         return removedBrackets;
     }

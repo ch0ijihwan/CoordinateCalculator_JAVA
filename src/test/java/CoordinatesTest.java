@@ -1,6 +1,7 @@
+import model.Coordinates;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import vo.Coordinate;
+import model.vo.Coordinate;
 
 import java.util.Arrays;
 import java.util.List;
