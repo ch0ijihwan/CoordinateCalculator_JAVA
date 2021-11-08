@@ -8,8 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ValueTest {
     @Test
     @DisplayName("Value의 값이 정수가 아닌경우 IllegalArgumentException 예외처리를 발생함.")
-    void validateValue()
-    {
+    void validateValue() {
         //give
         String input = "0.1";
 
