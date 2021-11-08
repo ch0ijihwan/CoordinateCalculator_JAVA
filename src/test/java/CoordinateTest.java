@@ -41,10 +41,11 @@ public class CoordinateTest {
     @CsvSource(value = {"1,2", "0,0", "10,20", "-1,-1"})
     @DisplayName("하나의 문자열로 숫자 두개를 받았을 때, 그중 첫번째로 입력받은 수를 x로" +
             "두번째로 입력받은 수를 y로 좌표 형태로 저장하는지 확인한다.")
-    void createCoorinate(String coordinate) {
+    void createCoorinate(String inputX, String inputY) {
+
         //given
-        int x = Integer.parseInt(coordinate.split(",")[0]);
-        int y = Integer.parseInt(coordinate.split(",")[1]);
+        int x = Integer.parseInt(inputX);
+        int y = Integer.parseInt(inputY);
         int expectX = x;
         int expectY = y;
 
