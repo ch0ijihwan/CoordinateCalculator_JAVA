@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CoordinateTest {
     @ParameterizedTest
-    @DisplayName("객체 생성 시, 좌표의 값을 입력 받으면 이를 저장한다.")
+    @DisplayName("객체 생성 시, 생성자로 부터 차례대로 입력 받은 X,Y 좌표의 값을 각각 저장한다.")
     @CsvSource(value = {"0", "24"})
     void createCoordinate(int inputtedCoordinate) {
         //when
@@ -21,7 +21,7 @@ class CoordinateTest {
     }
 
     @ParameterizedTest
-    @DisplayName("입력 받은 좌표의 값이 0 보다 작거나 24 보다 크면, 예외처리를 반환한다.")
+    @DisplayName("객체 생성 시, 생성자로부터 입력받은 좌표의 값이 0 보다 작거나 24 보다 크면, 예외처리를 반환한다.")
     @CsvSource(value = {"-1", "25"})
     void validateCoordinate(int inputtedCoordinate) {
         //then
