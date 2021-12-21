@@ -8,8 +8,7 @@ import java.util.Objects;
 public class StraightLine implements Shape {
     private static final int FIRST_POINT = 0;
     private static final int SECOND_POINT = 1;
-    private static final int POINT_NUMBER_FOR_MAKING_LINE = 2;
-    private static final int POINT_NUMBER_WHEN_DUPLICATION = 1;
+    private static final int NUMBER_OF_LINE_VERTEX = 2;
     private final List<Point> points;
 
     public StraightLine(List<Point> points) {
@@ -19,13 +18,13 @@ public class StraightLine implements Shape {
     }
 
     private void validateNumberOfPoints(List<Point> points) {
-        if (points.size() != POINT_NUMBER_FOR_MAKING_LINE) {
+        if (points.size() != NUMBER_OF_LINE_VERTEX) {
             throw new IllegalArgumentException("선을 만들기 위해서는 점이 2개 만이 필요합니다.");
         }
     }
 
     private void validateDuplication(List<Point> points) {
-        if (points.stream().distinct().count() == POINT_NUMBER_WHEN_DUPLICATION) {
+        if (points.stream().distinct().count() != NUMBER_OF_LINE_VERTEX) {
             throw new IllegalArgumentException("선을 만들기 위해서는 서로 다른 점 2개가 필요합니다.");
         }
     }
