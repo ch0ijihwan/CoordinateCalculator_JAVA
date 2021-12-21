@@ -33,15 +33,17 @@ public class Triangle implements Shape {
         Point yPoint = points.get(1);
         Point zPoint = points.get(2);
 
-        return 0.5 * Math.abs(
-                xPoint.getX().getValue() * yPoint.getY().getValue()
-                        + yPoint.getX().getValue() * zPoint.getY().getValue()
-                        + zPoint.getX().getValue() * xPoint.getY().getValue()
-                        - (
-                        xPoint.getY().getValue() * yPoint.getX().getValue()
-                                + yPoint.getY().getValue() * zPoint.getX().getValue()
-                                + zPoint.getY().getValue() * xPoint.getX().getValue())
-        );
+        return findAreaOfThreeCoordinates(xPoint,yPoint,zPoint);
+    }
+
+    private double findAreaOfThreeCoordinates(Point x, Point y, Point z) {
+        int x1 = x.getXValue();
+        int x2 = y.getXValue();
+        int x3 = z.getXValue();
+        int y1 = x.getYValue();
+        int y2 = y.getYValue();
+        int y3 = z.getYValue();
+        return 0.5 * Math.abs(x1 * y2 + x2 * y3 + x3 * y1 - (y1 * x2 + y2 * x3 + y3 * x1));
     }
 
     @Override
