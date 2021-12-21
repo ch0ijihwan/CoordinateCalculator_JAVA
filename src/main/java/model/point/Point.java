@@ -19,6 +19,14 @@ public class Point {
         return y;
     }
 
+    public int getXValue() {
+        return x.getValue();
+    }
+
+    public int getYValue() {
+        return y.getValue();
+    }
+
     public double measureDistance(Point anotherPoint) {
         double x1 = getX().getValue();
         double x2 = anotherPoint.getX().getValue();
