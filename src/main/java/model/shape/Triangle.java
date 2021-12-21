@@ -48,7 +48,7 @@ public class Triangle implements Shape {
 
     @Override
     public String getShapeType() {
-        return null;
+        return "삼각형";
     }
 
     @Override

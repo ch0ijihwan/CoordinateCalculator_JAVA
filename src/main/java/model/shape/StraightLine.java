@@ -40,7 +40,7 @@ public class StraightLine implements Shape {
 
     @Override
     public String getShapeType() {
-        return "StraightLine";
+        return "직선";
     }
 
     @Override
@@ -54,5 +54,12 @@ public class StraightLine implements Shape {
     @Override
     public int hashCode() {
         return Objects.hash(points);
+    }
+
+    @Override
+    public String toString() {
+        return "StraightLine{" +
+                "points=" + points +
+                '}';
     }
 }
