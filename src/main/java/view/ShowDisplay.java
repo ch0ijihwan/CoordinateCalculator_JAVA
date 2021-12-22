@@ -6,7 +6,10 @@ public class ShowDisplay {
     private static final String LINE_PRINT_DISTANCE = "두 점 사이 거리는 :";
     private static final String SHAPE_PRINT_AREA = "%s의 넓이는 : %f%n";
     private static final String LINE = "직선";
-    private ShowDisplay(){}
+
+    private ShowDisplay() {
+    }
+
     public static void showInputDisplay() {
         System.out.println(INPUT_MESSAGE);
     }
