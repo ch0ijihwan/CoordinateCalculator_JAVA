@@ -33,7 +33,7 @@ public class Triangle implements Shape {
         Point yPoint = points.get(1);
         Point zPoint = points.get(2);
 
-        return findAreaOfThreeCoordinates(xPoint,yPoint,zPoint);
+        return findAreaOfThreeCoordinates(xPoint, yPoint, zPoint);
     }
 
     private double findAreaOfThreeCoordinates(Point x, Point y, Point z) {
