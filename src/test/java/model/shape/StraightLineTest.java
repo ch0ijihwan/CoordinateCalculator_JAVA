@@ -59,7 +59,7 @@ class StraightLineTest {
         StraightLine straightLine = new StraightLine(inputtedPoints);
 
         //when
-        double actual = straightLine.getLength();
+        double actual = straightLine.getArea();
 
         //then
         assertThat(actual).isEqualTo(ROOT_2, offset(0.00099));

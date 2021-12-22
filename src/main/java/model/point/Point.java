@@ -31,7 +31,7 @@ public class Point {
         double x1 = getX().getValue();
         double x2 = anotherPoint.getX().getValue();
         double y1 = getY().getValue();
-        double y2 = anotherPoint.getX().getValue();
+        double y2 = anotherPoint.getY().getValue();
         double xDistance = Math.pow(x1 - x2, 2);
         double yDistance = Math.pow(y1 - y2, 2);
         return Math.sqrt(xDistance + yDistance);
