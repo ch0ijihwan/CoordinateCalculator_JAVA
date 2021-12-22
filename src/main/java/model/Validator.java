@@ -38,7 +38,6 @@ public class Validator {
         if (numberOfBars == NO_INPUTTED_BAR || numberOfPoints == INPUTTED_ONLY_ONE_POINT || numberOfBars + 1 != numberOfPoints) {
             throw new IllegalArgumentException("입력 받은 좌표식의 형태가 이상합니다.");
         }
-
     }
 
     private void validateBarDuplication(String values) {
