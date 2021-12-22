@@ -29,13 +29,13 @@ public class StraightLine implements Shape {
         }
     }
 
-    public double getLength() {
+    private double getLength() {
         return points.get(FIRST_POINT).measureDistance(points.get(SECOND_POINT));
     }
 
     @Override
     public double getArea() {
-        return 0;
+        return getLength();
     }
 
     @Override

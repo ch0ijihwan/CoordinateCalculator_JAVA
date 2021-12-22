@@ -22,7 +22,7 @@ public class ShapeMaker {
         shapeMap.put(NUMBER_OF_POINTS_FOR_RECTANGLE, Rectangle::new);
     }
 
-    static Shape makeShape(List<Point> points) {
+    public static Shape makeShape(List<Point> points) {
         int numberOfPoints = points.size();
         return shapeMap.get(numberOfPoints).apply(points);
     }
