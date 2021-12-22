@@ -5,7 +5,7 @@ public class ShowDisplay {
     private static final String INVALID_INPUT_ERROR_MESSAGE = "입력 값이 유효하지 않습니다";
     private static final String LINE_PRINT_DISTANCE = "두 점 사이 거리는 :";
     private static final String SHAPE_PRINT_AREA = "%s의 넓이는 : %f%n";
-    private static final String LINE = "직선";
+    private static final String STRAIGHT_LINE = "직선";
 
     private ShowDisplay() {
     }
@@ -19,7 +19,7 @@ public class ShowDisplay {
     }
 
     public static void showArea(String shape, double area) {
-        if (shape.equals(LINE)) {
+        if (shape.equals(STRAIGHT_LINE)) {
             System.out.println(LINE_PRINT_DISTANCE + area);
             return;
         }
