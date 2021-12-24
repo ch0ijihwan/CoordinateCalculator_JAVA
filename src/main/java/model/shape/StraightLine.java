@@ -30,7 +30,8 @@ public class StraightLine implements Shape {
     }
 
     private double getLength() {
-        return points.get(FIRST_POINT).measureDistance(points.get(SECOND_POINT));
+        return points.get(FIRST_POINT)
+                .measureDistance(points.get(SECOND_POINT));
     }
 
     @Override
