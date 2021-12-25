@@ -13,6 +13,7 @@ public class Validator {
     private static final char DELIMITER_SPOT = ',';
     private static final int NO_INPUTTED_BAR = 0;
     private static final int INPUTTED_ONLY_ONE_POINT = 0;
+    private static final String BLANK = "";
     private static final String DELIMITER_BAR = "-";
     private static final String POINT_REGX = "\\([0-9]{1,2},[0-9]{1,2}\\)";
     private static final String DUPLICATION_BAR_REGX = "-{2,}";
@@ -41,7 +42,7 @@ public class Validator {
     }
 
     private void validateBarDuplication(String values) {
-        int removedDuplicationValueSize = values.replaceAll(DUPLICATION_BAR_REGX, "").length();
+        int removedDuplicationValueSize = values.replaceAll(DUPLICATION_BAR_REGX, BLANK).length();
         if (removedDuplicationValueSize != values.length()) {
             throw new IllegalArgumentException("입력 받은 좌표식의 형태가 이상합니다.");
         }
