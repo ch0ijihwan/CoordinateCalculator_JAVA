@@ -11,13 +11,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ValidatorTest {
+class ExpressionFormValidatorTest {
     @ParameterizedTest
     @CsvSource(value = {"(10,10)(14,15)", "(10,10)--(20,8)"}, delimiter = ' ')
     @DisplayName("객체 생성 시 파라미터로 부터 입력 받은 좌표식의 형태가 유효하지 않은 경우 예외처리를 반환한다.")
     void validateExpressionShape(String inputtedValue) {
         //then
-        assertThatThrownBy(() -> new Validator(inputtedValue))
+        assertThatThrownBy(() -> new ExpressionFormValidator(inputtedValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력 받은 좌표식의 형태가 이상합니다.");
     }
@@ -27,7 +27,7 @@ class ValidatorTest {
     @DisplayName("객체 생성 시 파라미터로 부터 입력 받은 좌표 중, 괄호의 형태가 유효하지 않은 경우 예외처리를 반환한다.")
     void validateCoordinateForm(String inputtedValue) {
         //then
-        assertThatThrownBy(() -> new Validator(inputtedValue))
+        assertThatThrownBy(() -> new ExpressionFormValidator(inputtedValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력 받은 좌표 중, 형태가 이상한 것이 있습니다.");
     }
@@ -36,11 +36,11 @@ class ValidatorTest {
     void getPoints() {
         //given
         String inputted = "(10,10)-(14,15)-(20,8)";
-        Validator validator = new Validator(inputted);
+        ExpressionFormValidator expressionFormValidator = new ExpressionFormValidator(inputted);
         List<Point> expectedPoints = List.of(new Point(10, 10), new Point(14, 15), new Point(20, 8));
 
         //when
-        List<Point> actual = validator.getPoints();
+        List<Point> actual = expressionFormValidator.getPoints();
 
         //then
         assertThat(actual).isEqualTo(expectedPoints);

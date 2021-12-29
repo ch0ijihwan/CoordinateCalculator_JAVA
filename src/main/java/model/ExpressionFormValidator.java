@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Validator {
+public class ExpressionFormValidator {
     private static final char CHAR_BAR = '-';
     private static final char DELIMITER_SPOT = ',';
     private static final int NO_INPUTTED_BAR = 0;
@@ -20,7 +20,7 @@ public class Validator {
     private static final Pattern POINT_PATTERN = Pattern.compile(POINT_REGX);
     private final List<Point> points;
 
-    public Validator(String inputtedValue) {
+    public ExpressionFormValidator(String inputtedValue) {
         validateExpressionForm(inputtedValue);
         List<String> inputtedPoints = divideValuesByBar(inputtedValue);
         validatePointForm(inputtedPoints);
@@ -80,8 +80,8 @@ public class Validator {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Validator validator = (Validator) o;
-        return Objects.equals(points, validator.points);
+        ExpressionFormValidator expressionFormValidator = (ExpressionFormValidator) o;
+        return Objects.equals(points, expressionFormValidator.points);
     }
 
     @Override
