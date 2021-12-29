@@ -49,12 +49,14 @@ public class Validator {
     }
 
     private int countChar(String values, char target) {
-        return (int) values.chars().filter(c -> c == target).count();
+        return (int) values.chars().filter(value -> value == target).count();
     }
 
 
     private void validatePointForm(List<String> inputtedPoints) {
-        int invalidPointFormCount = (int) inputtedPoints.stream().filter(value -> !POINT_PATTERN.matcher(value).matches()).count();
+        int invalidPointFormCount = (int) inputtedPoints.stream()
+                .filter(value -> !POINT_PATTERN.matcher(value).matches())
+                .count();
 
         if (invalidPointFormCount > 0) {
             throw new IllegalArgumentException("입력 받은 좌표 중, 형태가 이상한 것이 있습니다.");
