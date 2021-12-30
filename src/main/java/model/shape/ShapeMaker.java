@@ -11,7 +11,7 @@ public class ShapeMaker {
     private static final int NUMBER_OF_POINTS_FOR_LINE = 2;
     private static final int NUMBER_OF_POINTS_FOR_TRIANGLE = 3;
     private static final int NUMBER_OF_POINTS_FOR_RECTANGLE = 4;
-    private static Map<Integer, Function<List<Point>, Shape>> shapeMap = new HashMap<>();
+    private static final Map<Integer, Function<List<Point>, Shape>> shapeMap = new HashMap<>();
 
     private ShapeMaker() {
     }
