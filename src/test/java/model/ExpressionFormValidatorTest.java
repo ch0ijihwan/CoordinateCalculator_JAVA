@@ -23,7 +23,7 @@ class ExpressionFormValidatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"(1,1(-(1,1)", ")1,1)-(1,1)", "1,1-(1,2)"}, delimiter = ' ')
+    @ValueSource(strings = {"(1,1(-(1,1)", ")1,1)-(1,1)", "1,1-(1,2)"})
     @DisplayName("객체 생성 시 파라미터로 부터 입력 받은 좌표 중, 괄호의 형태가 유효하지 않은 경우 예외처리를 반환한다.")
     void validateCoordinateForm(String inputtedValue) {
         //then
