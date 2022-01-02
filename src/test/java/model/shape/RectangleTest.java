@@ -21,7 +21,8 @@ class RectangleTest {
     @DisplayName("객체 생성 시, 파라미터로 부터 입력 받은 좌표를 리스트 형태로 가진다.")
     void createRectangle() {
         //given
-        List<Point> inputtedPoints = List.of(new Point(0, 0), new Point(1, 0), new Point(0, 1), new Point(1, 1));
+        List<Point> inputtedPoints =
+                List.of(new Point(0, 0), new Point(1, 0), new Point(0, 1), new Point(1, 1));
 
         //when
         Rectangle rectangle = new Rectangle(inputtedPoints);
@@ -31,10 +32,10 @@ class RectangleTest {
     }
 
     @Test
-    @DisplayName("객체 생성 시, validateNumberOfPoints 를 호출하여 파라미터로 부터 입력 받은 좌표의 개수가 4개를 초과하면 예외처리를 반환한다.")
+    @DisplayName("객체 생성 시, validateNumberOfPoints 를 호출하여 파라미터로 부터 입력 받은 좌표의 개수가 4개가 아니라면 예외처리를 반환한다.")
     void validateNumberOfPoints() {
         //given
-        List<Point> inputtedPoints = List.of(new Point(0, 0), new Point(1, 0), new Point(1, 0), new Point(1, 1), new Point(3, 3));
+        List<Point> inputtedPoints = List.of(new Point(0, 0));
 
         //then
         assertThatThrownBy(() -> new Rectangle(inputtedPoints))
@@ -43,7 +44,7 @@ class RectangleTest {
     }
 
     @Test
-    @DisplayName("객체 생성 시,validateDuplication() 를 호출하여 파라미터로 부터 입력받은 점들 중 같은 점이 있는 경우 예외 처리를 반환한다.")
+    @DisplayName("객체 생성 시,validateDuplication() 를 호출하여 파라미터로 부터 입력받은 점들이 중복되는 경우이 있는 경우 예외 처리를 반환한다.")
     void validateDuplication() {
         //given
         List<Point> inputtedPoints = List.of(new Point(1, 1), new Point(1, 1), new Point(2, 2), new Point(3, 3));
