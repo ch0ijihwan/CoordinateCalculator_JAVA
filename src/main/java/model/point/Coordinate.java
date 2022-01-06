@@ -10,11 +10,11 @@ public class Coordinate {
     private final int value;
 
     public Coordinate(int value) {
-        validateCoordinate(value);
+        validateCoordinateRange(value);
         this.value = value;
     }
 
-    private void validateCoordinate(int value) {
+    private void validateCoordinateRange(int value) {
         if (value < COORDINATE_MIN_BOUNDARY || value > COORDINATE_MAX_BOUNDARY) {
             throw new IllegalArgumentException(INVALID_COORDINATE_BOUNDARY_MESSAGE);
         }
