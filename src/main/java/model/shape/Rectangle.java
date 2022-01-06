@@ -3,7 +3,6 @@ package model.shape;
 import model.point.Coordinate;
 import model.point.Point;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -13,6 +12,8 @@ import java.util.stream.Collectors;
 public class Rectangle implements Shape {
     private static final int NUMBER_OF_DUPLICATED_COORDINATE = 2;
     private static final int NUMBER_OF_RECTANGULAR_VERTEX = 4;
+    private static final int FIRST_INDEX = 0;
+    private static final int SECOND_INDEX = 1;
     private final List<Point> points;
 
     public Rectangle(List<Point> points) {
@@ -35,38 +36,36 @@ public class Rectangle implements Shape {
     }
 
     private void validateRectangularShape(List<Point> points) {
-        Set<Coordinate> duplicationRemovedXCoordinates = RemoveCoordinateDuplication(points, Point::getX);
-        Set<Coordinate> duplicationRemovedYCoordinates = RemoveCoordinateDuplication(points, Point::getY);
+        Set<Coordinate> duplicationRemovedXCoordinates = removeCoordinateDuplication(points, Point::getX);
+        Set<Coordinate> duplicationRemovedYCoordinates = removeCoordinateDuplication(points, Point::getY);
 
         if (isNotDuplicated(duplicationRemovedXCoordinates) && isNotDuplicated(duplicationRemovedYCoordinates)) {
             throw new IllegalArgumentException("입력받은 점들이 직사각형의 형태가 아닙니다.");
         }
     }
 
-    private Set<Coordinate> RemoveCoordinateDuplication(List<Point> points, Function<Point, Coordinate> function) {
+    private Set<Coordinate> removeCoordinateDuplication(List<Point> points, Function<Point, Coordinate> function) {
         return points.stream()
                 .map(function)
                 .collect(Collectors.toUnmodifiableSet());
     }
 
-    private boolean isNotDuplicated(Set<Coordinate> coordinates) {
-        return coordinates.size() != NUMBER_OF_DUPLICATED_COORDINATE;
+    private boolean isNotDuplicated(Set<Coordinate> duplicationRemovedCoordinates) {
+        return duplicationRemovedCoordinates.size() != NUMBER_OF_DUPLICATED_COORDINATE;
     }
 
     @Override
     public double getArea() {
-        Set<Coordinate> duplicationRemovedXCoordinates = RemoveCoordinateDuplication(points, Point::getX);
-        Set<Coordinate> duplicationRemovedYCoordinates = RemoveCoordinateDuplication(points, Point::getY);
+        List<Coordinate> duplicationRemovedXCoordinates = removeCoordinateDuplication(points, Point::getX).stream()
+                .collect(Collectors.toUnmodifiableList());
+        List<Coordinate> duplicationRemovedYCoordinates = removeCoordinateDuplication(points, Point::getY).stream()
+                .collect(Collectors.toUnmodifiableList());
 
         return getLengthOfSide(duplicationRemovedXCoordinates) * getLengthOfSide(duplicationRemovedYCoordinates);
     }
 
-    private double getLengthOfSide(Set<Coordinate> coordinates) {
-        Iterator<Coordinate> coordinateIterator = coordinates.iterator();
-        Coordinate firstCoordinate = coordinateIterator.next();
-        Coordinate secondCoordinate = coordinateIterator.next();
-
-        return Math.abs(firstCoordinate.getValue() - secondCoordinate.getValue());
+    private double getLengthOfSide(List<Coordinate> coordinates) {
+        return Math.abs(coordinates.get(FIRST_INDEX).getDistanceOfCoordinates(coordinates.get(SECOND_INDEX)));
     }
 
     @Override
