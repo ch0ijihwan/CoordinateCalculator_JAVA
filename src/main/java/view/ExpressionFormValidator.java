@@ -24,7 +24,9 @@ public class ExpressionFormValidator {
         validateExpressionForm(inputtedValue);
         List<String> inputtedPoints = divideValuesByBar(inputtedValue);
         validatePointForm(inputtedPoints);
-        points = inputtedPoints.stream().map(this::createPoint).collect(Collectors.toUnmodifiableList());
+        points = inputtedPoints.stream()
+                .map(this::createPoint)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private void validateExpressionForm(String values) {
@@ -38,7 +40,8 @@ public class ExpressionFormValidator {
     }
 
     private List<String> divideValuesByBar(String inputtedValue) {
-        return Arrays.stream(inputtedValue.split(DELIMITER_BAR)).collect(Collectors.toUnmodifiableList());
+        return Arrays.stream(inputtedValue.split(DELIMITER_BAR))
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private Point createPoint(String pointValue) {
