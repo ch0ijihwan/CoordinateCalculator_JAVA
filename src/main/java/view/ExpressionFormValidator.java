@@ -1,4 +1,4 @@
-package model;
+package view;
 
 import model.point.Point;
 
@@ -24,21 +24,33 @@ public class ExpressionFormValidator {
         validateExpressionForm(inputtedValue);
         List<String> inputtedPoints = divideValuesByBar(inputtedValue);
         validatePointForm(inputtedPoints);
-        points = inputtedPoints.stream().map(this::createPoint).collect(Collectors.toUnmodifiableList());
-    }
-
-    private List<String> divideValuesByBar(String inputtedValue) {
-        return Arrays.stream(inputtedValue.split(DELIMITER_BAR)).collect(Collectors.toUnmodifiableList());
+        points = inputtedPoints.stream()
+                .map(this::createPoint)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private void validateExpressionForm(String values) {
         validateBarDuplication(values);
-        int numberOfBars = countChar(values, CHAR_BAR);
+        int numberOfBars = countChar(values);
         int numberOfPoints = divideValuesByBar(values).size();
 
         if (numberOfBars == NO_INPUTTED_BAR || numberOfPoints == INPUTTED_ONLY_ONE_POINT || numberOfBars + 1 != numberOfPoints) {
             throw new IllegalArgumentException("입력 받은 좌표식의 형태가 이상합니다.");
         }
+    }
+
+    private List<String> divideValuesByBar(String inputtedValue) {
+        return Arrays.stream(inputtedValue.split(DELIMITER_BAR))
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    private Point createPoint(String pointValue) {
+        String removedBracketValue = pointValue.substring(1, pointValue.length() - 1);
+        int indexOfSpot = pointValue.indexOf(DELIMITER_SPOT);
+        int x = Integer.parseInt(removedBracketValue.substring(0, indexOfSpot - 1));
+        int y = Integer.parseInt(removedBracketValue.substring(indexOfSpot));
+
+        return new Point(x, y);
     }
 
     private void validateBarDuplication(String values) {
@@ -48,8 +60,10 @@ public class ExpressionFormValidator {
         }
     }
 
-    private int countChar(String values, char target) {
-        return (int) values.chars().filter(value -> value == target).count();
+    private int countChar(String values) {
+        return (int) values.chars()
+                .filter(value -> value == ExpressionFormValidator.CHAR_BAR)
+                .count();
     }
 
 
@@ -61,15 +75,6 @@ public class ExpressionFormValidator {
         if (invalidPointFormCount > 0) {
             throw new IllegalArgumentException("입력 받은 좌표 중, 형태가 이상한 것이 있습니다.");
         }
-    }
-
-    private Point createPoint(String pointValue) {
-        String removedBracketValue = pointValue.substring(1, pointValue.length() - 1);
-        int indexOfSpot = pointValue.indexOf(DELIMITER_SPOT);
-        int x = Integer.parseInt(removedBracketValue.substring(0, indexOfSpot - 1));
-        int y = Integer.parseInt(removedBracketValue.substring(indexOfSpot));
-
-        return new Point(x, y);
     }
 
     public List<Point> getPoints() {

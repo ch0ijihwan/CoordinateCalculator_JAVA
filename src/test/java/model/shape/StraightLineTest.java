@@ -48,7 +48,7 @@ class StraightLineTest {
         //then
         assertThatThrownBy(() -> new StraightLine(inputtedPoints))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("선을 만들기 위해서는 서로 다른 점 2개가 필요합니다.");
+                .hasMessage("선을 만들기 위해서는 점이 중복되면 안됩니다.");
     }
 
     @Test
